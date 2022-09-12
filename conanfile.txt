@@ -1,0 +1,21 @@
+[requires]
+boost/1.77.0
+openssl/1.1.1q
+protobuf/3.21.4
+cpprestsdk/2.10.18
+grpc/1.46.3
+
+[options]
+boost:shared=True
+
+
+[generators]
+cmake
+cmake_multi
+
+[imports]
+bin, *.dll -> ./conanlib
+lib, *.dylib* -> ./conanlib
+lib, *.so* -> ./conanlib
+
+
