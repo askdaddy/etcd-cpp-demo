@@ -11,8 +11,6 @@ endif()
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 
 conan_cmake_run(NO_OUTPUT_DIRS CONANFILE conanfile.txt
-                SETTINGS arch=x86_64
-                SETTINGS arch_build=x86_64
         INSTALL_FOLDER ${CMAKE_BINARY_DIR}
         BUILD missing
         BASIC_SETUP
@@ -26,7 +24,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR} ${CMAKE_MODULE_PATH})
 set(CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR} ${CMAKE_PREFIX_PATH})
 set(SYSTEM_LIBS  ${CONAN_LIBS})
 ## end of conan
+add_compile_options(-fPIC)
 
+set(GRPC_CHANNEL_CLASS_FOUND true)
 include_directories(etcd-cpp-apiv3-0.2.6)
 add_subdirectory("etcd-cpp-apiv3-0.2.6")
 
